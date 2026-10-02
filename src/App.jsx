@@ -4,6 +4,7 @@ import { Nav } from "@/components/layout/nav";
 import { PageBackdrop } from "@/components/layout/page-backdrop";
 import { SkipToContent } from "@/components/layout/skip-to-content";
 import { Providers } from "@/components/layout/providers";
+import { Footer } from "@/components/layout/footer";
 import HomePage from "@/pages/Home";
 import AboutPage from "@/pages/About";
 import ProjectsPage from "@/pages/Projects";
@@ -42,6 +43,9 @@ function RouteMetadata() {
 }
 
 function SiteShell({ children }) {
+  const { pathname } = useLocation();
+
+  const showFooter = pathname !== "/contact";
   return (
     <Providers>
       <div className="site-frame site-frame--top" aria-hidden="true" />
@@ -81,6 +85,7 @@ function SiteShell({ children }) {
           <PageBackdrop />
           <Nav />
       {children}
+      {showFooter && <Footer />}
     </Providers>
   );
 }

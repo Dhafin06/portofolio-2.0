@@ -3,7 +3,6 @@ import { Experience } from "@/components/about/experience";
 import { PolaroidStrip } from "@/components/about/polaroid-strip";
 import { Skills } from "@/components/about/skills";
 import { Stack } from "@/components/about/stack";
-import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
 export default function AboutPage() {
     return (<main id="main-content" className="flex flex-1 flex-col">
@@ -43,7 +42,6 @@ export default function AboutPage() {
         </FadeIn>
       </section>
 
-      <ContactCard />
       <div className="h-12 sm:h-16"/>
     </main>);
 }
