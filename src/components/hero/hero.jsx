@@ -2,7 +2,7 @@ import { HeroCtas } from "./hero-ctas";
 import { FadeIn, ScaleUnblur } from "@/components/ui/motion-primitives";
 import { SpotlightImage } from "./spotlight-image";
 
-const PORTRAIT_SRC = "/public/images/profile.png";
+const PORTRAIT_SRC = "/images/profile.png";
 
 export function Hero() {
   return (

@@ -6,7 +6,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: oklch(1 0 0);
+  --background: #f5f5f5;
   --foreground: oklch(0.145 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -45,7 +45,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #0d0f12;
   --foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
@@ -309,9 +309,11 @@ html[data-theme-anim="1"]::view-transition-new(root) {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
