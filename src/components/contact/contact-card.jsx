@@ -1,59 +1,89 @@
-import { Mail } from "lucide-react";
-import { ContactCardCtas } from "./contact-card-ctas";
-import { FadeIn } from "@/components/ui/motion-primitives";
-import { ShaderFlow } from "../shaders/shader-flow";
-const CARD_FADE_MASK = "radial-gradient(ellipse 90% 110% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0.15) 100%)";
+import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+
+const CONTACT_ITEMS = [
+  {
+    number: "01",
+    label: "Email",
+    value: "aksanidradhafin05@gmail.com",
+    href: "mailto:aksanidradhafin05@gmail.com",
+    icon: Mail,
+  },
+  {
+    number: "02",
+    label: "LinkedIn",
+    value: "LinkedIn Profile",
+    href: "#",
+    icon: Linkedin,
+  },
+  {
+    number: "03",
+    label: "GitHub",
+    value: "GitHub Profile",
+    href: "#",
+    icon: Github,
+  },
+];
+
 export function ContactCard() {
-    return (<section className="mx-auto my-12 w-full max-w-275 px-6 sm:my-20 sm:px-10">
-      <FadeIn>
-        <div className="relative w-full overflow-hidden rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
-          <div className="relative w-full overflow-hidden rounded-[1.6rem]">
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-45 dark:opacity-25" style={{
-            WebkitMaskImage: CARD_FADE_MASK,
-            maskImage: CARD_FADE_MASK,
-        }}>
-              <ShaderFlow scale={3} brightness={3}/>
-            </div>
+  return (
+    <div className="flex w-full flex-col gap-3">
+      {CONTACT_ITEMS.map((item) => {
+        const Icon = item.icon;
 
-            <div className="relative grid gap-8 p-6 sm:gap-10 sm:p-7 md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-6 md:p-6">
-              <div className="flex flex-col gap-5">
-                <h2 className="font-serif text-[2.25rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-[2.75rem] lg:text-[3.25rem]">
-                  Let&rsquo;s connect
-                </h2>
-                <p className="max-w-[29ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px] mb-6">
-                  I&rsquo;m always open to discussing new projects, creative
-                  ideas, or opportunities to be part of your visions. Just reach out!
-                </p>
-                <ContactCardCtas />
+        return (
+          <a
+            key={item.number}
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={
+              item.href.startsWith("http")
+                ? "noopener noreferrer"
+                : undefined
+            }
+            className="group flex min-h-24 items-center justify-between rounded-2xl border border-foreground/20 bg-background px-5 py-4 shadow-sm transition-all duration-300 hover:border-foreground/70 sm:px-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-foreground/8 bg-foreground/[0.025] text-foreground/70 transition-all duration-300 group-hover:border-foreground/15 group-hover:bg-foreground/[0.06] group-hover:text-foreground">
+                <Icon
+                  className="h-4 w-4"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
               </div>
 
-              <div className="border-foreground/8 flex flex-col items-center justify-center gap-6 rounded-[1.1rem] border bg-background p-6 sm:p-8">
-                <div className="flex items-center gap-3 opacity-75">
-                  <SocialIcon href="mailto:hello@example.com" label="Email" lucideIcon={Mail}/>
-                  <SocialIcon href="https://www.linkedin.com" label="LinkedIn" imageSrc="/icons/linkedin.svg"/>
-                  <SocialIcon href="https://x.com" label="X" imageSrc="/icons/x.svg"/>
-                </div>
-                <div className="flex flex-col items-center gap-1 text-center">
-                  <p className="text-[13px] tracking-tight text-foreground/70">
-                    2026 &copy; Built with React + Vite
-                  </p>
-                  <p className="text-[12px] tracking-tight text-foreground/45">
-                    By React Bits Pro
-                  </p>
-                </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-foreground/45">
+                  {item.label}
+                </span>
+
+                <span className="text-sm font-medium tracking-tight text-foreground sm:text-[15px]">
+                  {item.value}
+                </span>
               </div>
             </div>
-          </div>
-        </div>
-      </FadeIn>
-    </section>);
-}
-function SocialIcon({ href, label, lucideIcon: LucideIcon, imageSrc, }) {
-    const isExternal = href.startsWith("http");
-    const props = isExternal
-        ? { target: "_blank", rel: "noopener noreferrer" }
-        : {};
-    return (<a href={href} aria-label={label} className="border-foreground/8 hover:border-foreground/15 focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-background text-foreground/70 transition-colors hover:text-foreground" {...props}>
-      {LucideIcon ? (<LucideIcon className="h-4 w-4" strokeWidth={2.5} aria-hidden="true"/>) : imageSrc ? (<img src={imageSrc} alt="" width="14" height="14" aria-hidden="true" className="max-h-[14px] max-w-[14px] object-contain dark:invert"/>) : null}
-    </a>);
+
+            <div className="flex items-center gap-3">
+              <span className="hidden text-[11px] font-medium tracking-[0.12em] text-foreground/35 sm:block">
+                {item.number}
+              </span>
+
+              <ArrowUpRight
+                className="h-4 w-4 text-foreground/35 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground/70"
+                aria-hidden="true"
+              />
+            </div>
+          </a>
+        );
+      })}
+
+      <a
+        href="mailto:aksanidradhafin05@gmail.com"
+        className="group mt-2 flex h-12 items-center justify-center rounded-full border border-foreground/20 bg-background px-6 text-sm font-medium tracking-tight text-foreground transition-all duration-300 hover:border-foreground/70"
+      >
+        Send a message
+
+        <ArrowUpRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      </a>
+    </div>
+  );
 }
