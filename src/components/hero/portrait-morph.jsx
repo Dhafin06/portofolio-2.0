@@ -267,7 +267,7 @@ export function PortraitMorph({ srcA, srcB, alt, className, }) {
                 container.removeChild(canvas);
         };
     }, [srcA, srcB]);
-    return (<div ref={containerRef} role="img" aria-label={alt} className={className} style={{ position: "relative", width: "100%", height: "100%", filter: "grayscale(100%)" }}>
+    return (<div ref={containerRef} role="img" aria-label={alt} className={className} style={{ position: "relative", width: "100%", height: "100%" }}>
       {!ready ? (<img src={srcA} alt={alt} draggable={false} className="absolute inset-0 h-full w-full select-none object-cover"/>) : null}
     </div>);
 }
