@@ -8,7 +8,7 @@ export default function ContactPage() {
       id="main-content"
       className="flex flex-1 flex-col"
     >
-      <section className="mx-auto w-full max-w-7xl px-6 pt-36 pb-16 sm:px-10 sm:pt-44 lg:px-12 lg:pt-48">
+      <section className="mx-auto w-full max-w-[1180px] px-6 pt-36 pb-16 sm:px-10 sm:pt-44 lg:px-12 lg:pt-48">
         <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           {/* Heading */}
           <FadeIn className="flex flex-col gap-6">

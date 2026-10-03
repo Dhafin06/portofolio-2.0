@@ -26,7 +26,7 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="mx-auto w-full max-w-275 px-6 pb-24 pt-12 sm:px-10 sm:pb-32 sm:pt-20">      <FadeIn>
+    <footer className="mx-auto w-full max-w-[1155px] px-6 pb-24 pt-12 sm:px-10 sm:pb-32 sm:pt-20">      <FadeIn>
         <div className="relative w-full overflow-hidden rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
           <div className="relative w-full overflow-hidden rounded-[1.6rem]">
             <div

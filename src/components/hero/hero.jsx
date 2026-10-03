@@ -7,7 +7,7 @@ const PORTRAIT_SRC = "/images/profile.png";
 export function Hero() {
   return (
     <section className="relative w-full">
-      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1180px] pt-44 pb-24 sm:pt-56 sm:pb-32">
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1080px] pt-44 pb-24 sm:pt-56 sm:pb-32">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-8">
           <FadeIn className="flex flex-col gap-4">
             <p className="text-[20px] font-medium leading-tight tracking-tight text-foreground">

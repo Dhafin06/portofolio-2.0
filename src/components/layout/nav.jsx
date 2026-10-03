@@ -163,7 +163,7 @@ export function Nav() {
   return (
     <nav
         aria-label="Primary"
-        className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1180px] -translate-x-1/2"
+        className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1080px] -translate-x-1/2"
         >
         <div className="flex items-center justify-between gap-3">
             {/* Logo */}
