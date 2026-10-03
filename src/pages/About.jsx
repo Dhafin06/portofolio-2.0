@@ -67,10 +67,10 @@ export default function AboutPage() {
 
                     <div>
                       <p className="text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-                        IT
+                        IT Business
                       </p>
                       <p className="mt-1 text-xs tracking-tight text-foreground/50 sm:text-sm">
-                        Governance
+                        Analyst
                       </p>
                     </div>
                   </div>

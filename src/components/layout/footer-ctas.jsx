@@ -1,20 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ContactButton } from "@/components/contact/contact-button";
 
 export function FooterCtas() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <Link
-        to="/contact"
-        className="focus-ring group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity duration-300 hover:opacity-85"
-      >
-        Contact Me
-
-        <ArrowUpRight
-          className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </Link>
+      <ContactButton />
 
       <Link
         to="/projects"
@@ -22,10 +13,10 @@ export function FooterCtas() {
       >
         View Projects
 
-        <ArrowUpRight
-          className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
+          <ArrowUpRight
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
       </Link>
     </div>
   );
