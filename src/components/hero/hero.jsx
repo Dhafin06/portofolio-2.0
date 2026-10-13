@@ -19,17 +19,15 @@ export function Hero() {
             </p>
 
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
+              <span className="block">IT Governance &amp;</span>
               <span className="block whitespace-nowrap">
-                Fullstack Developer &
+                Enterprise Architecture
               </span>
-              <span className="block whitespace-nowrap">
-                IT Business Analyst
-              </span>
+              <span className="block">Enthusiast</span>
             </h1>
 
             <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              Independent engineer focused on interfaces that feel calm,
-              considered, and quietly fast.
+              Aligning business goals and technology through structured analysis, thoughtful architecture, and effective IT governance.
             </p>
 
             <HeroCtas />
