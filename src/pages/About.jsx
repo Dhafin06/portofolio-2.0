@@ -28,29 +28,29 @@ export default function AboutPage() {
                     .
                   </h1>
 
-                  <div className="mt-6 space-y-4 text-[15px] leading-[1.65] tracking-tight text-foreground/65 sm:text-[16px]">
+                  <div className="mt-6 max-w-[32rem] space-y-4 text-[14px] leading-[1.7] tracking-normal text-foreground/65 sm:text-[15px]">
                     <p>
-                      I&rsquo;m an Information Systems student with an interest
-                      in building digital products and understanding how
-                      technology supports business processes.
+                      I&rsquo;m an Information Systems graduate from Telkom
+                      University, interested in how business needs connect
+                      with technology and how organizations can use technology
+                      to support their goals.
                     </p>
 
                     <p>
-                      My experience combines{" "}
-                      <strong className="font-semibold text-foreground">
-                        full-stack development
-                      </strong>{" "}
-                      with{" "}
-                      <strong className="font-semibold text-foreground">
-                        business process and IT governance
-                      </strong>
-                      , allowing me to approach projects from both technical
-                      and business perspectives.
+                      My project experience includes enterprise architecture
+                      design using TOGAF, IT governance assessment with COBIT
+                      2019, and risk assessment using ISO 31000. As a Teaching
+                      Assistant and Tools Coordinator at the System Architecture
+                      and Governance Laboratory, I also supported students in
+                      business process modeling and enterprise architecture.
                     </p>
 
                     <p>
-                      I enjoy turning ideas and requirements into practical,
-                      structured, and usable digital solutions.
+                      I focus on understanding business needs, analyzing
+                      processes, and identifying gaps to develop practical
+                      recommendations. I aim to apply these skills in IT
+                      business analysis, IT governance, and enterprise
+                      architecture.
                     </p>
                   </div>
 
@@ -58,19 +58,19 @@ export default function AboutPage() {
                   <div className="mt-8 grid max-w-[28rem] grid-cols-2 gap-6 border-t border-foreground/8 pt-6">
                     <div>
                       <p className="text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-                        Full-Stack
+                        IT Governance
                       </p>
                       <p className="mt-1 text-xs tracking-tight text-foreground/50 sm:text-sm">
-                        Development
+                        Risk & Quality
                       </p>
                     </div>
 
                     <div>
                       <p className="text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-                        IT Business
+                        Enteprise 
                       </p>
                       <p className="mt-1 text-xs tracking-tight text-foreground/50 sm:text-sm">
-                        Analyst
+                        Arhitecture
                       </p>
                     </div>
                   </div>

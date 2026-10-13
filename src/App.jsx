@@ -9,6 +9,7 @@ import HomePage from "@/pages/Home";
 import AboutPage from "@/pages/About";
 import ProjectsPage from "@/pages/Projects";
 import ContactPage from "@/pages/Contact";
+import ScrollToTop from "@/components/layout/scroll-to-top";
 
 const ROUTE_META = {
   "/": {
@@ -94,6 +95,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <RouteMetadata />
+      <ScrollToTop />
       <SiteShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
