@@ -1,20 +1,16 @@
+
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
-import { motion } from "motion/react";
 import { useTheme } from "next-themes";
-import { Link, useLocation } from "react-router-dom";
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import RubberSegment from "@/components/effects/RubberSegment";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Certifications", href: "/certifications" },
+  { label: "Contact Me", href: "/contact" },
 ];
 
 function useIsMounted() {
@@ -34,12 +30,11 @@ function NavThemeToggle() {
   const toggleTheme = (event) => {
     const next = isDark ? "light" : "dark";
 
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const supportsViewTransitions =
-      typeof document !== "undefined" &&
       typeof document.startViewTransition === "function";
 
     if (!supportsViewTransitions || prefersReducedMotion) {
@@ -48,7 +43,6 @@ function NavThemeToggle() {
     }
 
     const rect = event.currentTarget.getBoundingClientRect();
-
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
 
@@ -85,12 +79,12 @@ function NavThemeToggle() {
           : "Toggle theme"
       }
       aria-pressed={mounted ? isDark : undefined}
-      className="focus-ring relative inline-flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:bg-foreground/5"
+      className="focus-ring relative inline-flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl text-foreground transition-colors hover:bg-foreground/5"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
           className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
-            mounted && isDark
+            isDark
               ? "rotate-0 scale-100 opacity-100"
               : "-rotate-90 scale-0 opacity-0"
           }`}
@@ -110,14 +104,9 @@ function NavThemeToggle() {
 
 export function Nav() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-  const listRef = useRef(null);
-  const itemRefs = useRef([]);
-
-  const [pillRect, setPillRect] = useState(null);
-  const [hasMeasured, setHasMeasured] = useState(false);
-
-  const activeIndex = NAV_ITEMS.findIndex((item) => {
+  const activeItem = NAV_ITEMS.find((item) => {
     if (item.href === "/") {
       return pathname === "/";
     }
@@ -127,135 +116,83 @@ export function Nav() {
     );
   });
 
-  const isContactActive = pathname === "/contact";
-
-  useLayoutEffect(() => {
-    const list = listRef.current;
-    const activeEl =
-      activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
-
-    if (!list || !activeEl) {
-      setPillRect(null);
-      return;
-    }
-
-    const listRect = list.getBoundingClientRect();
-    const itemRect = activeEl.getBoundingClientRect();
-
-    setPillRect({
-      x: itemRect.left - listRect.left,
-      width: itemRect.width,
-    });
-  }, [activeIndex, pathname]);
-
-  useEffect(() => {
-    if (!pillRect) {
-      return;
-    }
-
-    const id = requestAnimationFrame(() => {
-      setHasMeasured(true);
-    });
-
-    return () => cancelAnimationFrame(id);
-  }, [pillRect]);
-
   return (
     <nav
-        aria-label="Primary"
-        className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1080px] -translate-x-1/2"
+      aria-label="Primary"
+      className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1080px] -translate-x-1/2"
+    >
+      <div className="flex h-12 items-center justify-between gap-3 rounded-2xl border border-foreground/10 bg-background px-3 shadow-sm sm:px-4">
+        {/* Logo */}
+        <Link
+          to="/"
+          aria-label="Go to homepage"
+          className="focus-ring inline-flex h-10 shrink-0 items-center px-2 text-sm font-semibold tracking-tight text-foreground transition-colors"
         >
-        <div className="flex items-center justify-between gap-3">
-            {/* Logo */}
-            <Link
-            to="/"
-            aria-label="Go to homepage"
-            className="focus-ring inline-flex h-11 shrink-0 items-center rounded-full bg-background px-5 text-sm font-semibold tracking-tight text-foreground shadow-sm ring-1 ring-foreground/8 transition-colors"
-            >
-            Dhafin.
-            </Link>
+          Dhafin.
+        </Link>
 
-            {/* Main Navigation */}
-            <ul
-            ref={listRef}
-            className="relative hidden h-11 items-center gap-1 rounded-full bg-background px-1.5 shadow-sm ring-1 ring-foreground/8 md:flex"
-            >
-            {pillRect && (
-                <motion.span
-                aria-hidden="true"
-                initial={false}
-                animate={{
-                    x: pillRect.x,
-                    width: pillRect.width,
-                }}
-                transition={
-                    hasMeasured
-                    ? {
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 32,
-                        }
-                    : {
-                        duration: 0,
-                        }
-                }
-                style={{
-                    left: 0,
-                    top: 6,
-                    bottom: 6,
-                }}
-                className="absolute rounded-full bg-foreground/5 ring-1 ring-foreground/8"
-                />
-            )}
-
-            {NAV_ITEMS.map((item, index) => {
-                const isActive = index === activeIndex;
-
-                return (
-                <li
-                    key={item.href}
-                    ref={(el) => {
-                    itemRefs.current[index] = el;
-                    }}
-                    className="relative"
-                >
-                    <Link
-                    to={item.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className="focus-ring relative inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-3.5 text-sm font-medium transition-colors duration-300"
-                    >
-                    <span
-                        className={
-                        isActive
-                            ? "relative z-10 text-foreground"
-                            : "relative z-10 text-foreground/60 hover:text-foreground"
-                        }
-                    >
-                        {item.label}
-                    </span>
-                    </Link>
-                </li>
-                );
-            })}
-            </ul>
-
-            {/* Right Actions */}
-            <div className="flex h-11 shrink-0 items-center gap-1 rounded-full bg-background px-1.5 shadow-sm ring-1 ring-foreground/8">
-            <Link
-                to="/contact"
-                aria-current={isContactActive ? "page" : undefined}
-                className={`focus-ring relative inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium transition-colors duration-300 ${
-                isContactActive
-                    ? "bg-foreground/5 text-foreground ring-1 ring-foreground/8"
-                    : "text-foreground/60 hover:text-foreground"
-                }`}
-            >
-                Contact Me
-            </Link>
-
-            <NavThemeToggle />
-            </div>
+        {/* Main Navigation */}
+        <div className="hidden min-w-0 flex-1 justify-center md:flex">
+          <RubberSegment
+            aria-label="Primary navigation"
+            items={NAV_ITEMS.filter(
+              (item) => item.href !== "/contact",
+            ).map((item) => ({
+              value: item.href,
+              label: item.label,
+            }))}
+            value={
+              NAV_ITEMS.find(
+                (item) =>
+                  item.href !== "/contact" &&
+                  (item.href === "/"
+                    ? pathname === "/"
+                    : pathname === item.href ||
+                      pathname.startsWith(`${item.href}/`)),
+              )?.href ?? "/"
+            }
+            onChange={(href) => navigate(href)}
+            size="md"
+            radius={12}
+            inset={3}
+            equalSlots={false}
+            stretch={100}
+            squash={3}
+            speed={1}
+            draggable={false}
+            trackColor="transparent"
+            thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
+            textColor="var(--foreground)"
+            activeTextColor="var(--foreground)"
+            className="!bg-transparent"
+          />
         </div>
-        </nav>
+
+        {/* Right Actions */}
+        <div className="flex shrink-0 items-center gap-2">
+          <RubberSegment
+            aria-label="Contact navigation"
+            items={[{ value: "/contact", label: "Contact Me" }]}
+            value={pathname === "/contact" ? "/contact" : ""}
+            onChange={() => navigate("/contact")}
+            size="md"
+            radius={12}
+            inset={3}
+            equalSlots
+            stretch={100}
+            squash={3}
+            speed={1}
+            draggable={false}
+            trackColor="transparent"
+            thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
+            textColor="var(--foreground)"
+            activeTextColor="var(--foreground)"
+            className="!bg-transparent"
+          />
+
+          <NavThemeToggle />
+        </div>
+      </div>
+    </nav>
   );
 }

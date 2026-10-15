@@ -12,7 +12,7 @@ export default function AboutPage() {
       <section className="mx-auto w-full max-w-[1155px] px-6 pt-25 pb-16 sm:px-10 sm:pt-30 sm:pb-20">
         <FadeIn>
           <div className="overflow-hidden rounded-4xl border border-foreground/8 bg-background">
-            <div className="grid min-h-[560px] md:grid-cols-[0.95fr_1.05fr]">
+            <div className="grid min-h-[480px] grid-cols-1 md:grid-cols-[1.15fr_0.85fr]">
               {/* About Content */}
               <div className="flex flex-col justify-center p-7 sm:p-10 md:p-12">
                 <div className="max-w-[30rem]">
@@ -28,31 +28,17 @@ export default function AboutPage() {
                     .
                   </h1>
 
-                  <div className="mt-6 max-w-[32rem] space-y-4 text-[14px] leading-[1.7] tracking-normal text-foreground/65 sm:text-[15px]">
-                    <p>
-                      I&rsquo;m an Information Systems graduate from Telkom
-                      University, interested in how business needs connect
-                      with technology and how organizations can use technology
-                      to support their goals.
-                    </p>
-
-                    <p>
-                      My project experience includes enterprise architecture
-                      design using TOGAF, IT governance assessment with COBIT
-                      2019, and risk assessment using ISO 31000. As a Teaching
-                      Assistant and Tools Coordinator at the System Architecture
-                      and Governance Laboratory, I also supported students in
-                      business process modeling and enterprise architecture.
-                    </p>
-
-                    <p>
-                      I focus on understanding business needs, analyzing
-                      processes, and identifying gaps to develop practical
-                      recommendations. I aim to apply these skills in IT
-                      business analysis, IT governance, and enterprise
-                      architecture.
-                    </p>
-                  </div>
+                <div className="mt-6 max-w-[36rem] text-[14px] leading-[1.8] tracking-normal text-foreground/65 sm:text-[15px]">
+                  <p>
+                    I&rsquo;m an Information Systems graduate from Telkom University with
+                    project experience in enterprise architecture using TOGAF, IT governance
+                    using COBIT 2019, and risk management using ISO 31000. Through my academic
+                    projects and experience as a Teaching Assistant and Tools Coordinator at
+                    the System Architecture and Governance Laboratory, I&rsquo;ve developed
+                    an interest in business analysis, IT governance, and aligning technology
+                    solutions with organizational goals.
+                  </p>
+                </div>
 
                   {/* Quick Info */}
                   <div className="mt-8 grid max-w-[28rem] grid-cols-2 gap-6 border-t border-foreground/8 pt-6">
@@ -78,7 +64,7 @@ export default function AboutPage() {
               </div>
 
               {/* Lanyard */}
-              <div className="relative min-h-[420px] border-t border-foreground/8 md:min-h-[560px] md:border-t-0 md:border-l">
+              <div className="relative h-[420px] min-w-0 border-t border-foreground/8 md:h-[560px] md:border-t-0 md:border-l">
                 <Lanyard frontImage="/images/profile.png" />
               </div>
             </div>

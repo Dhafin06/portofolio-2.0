@@ -530,8 +530,13 @@ function Lanyard({
   }, []);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full min-w-0 overflow-hidden">
       <Canvas
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
         camera={{
           position: [0, 0, 25],
           fov: 20,
@@ -542,10 +547,7 @@ function Lanyard({
           antialias: true,
         }}
         onCreated={({ gl }) => {
-          gl.setClearColor(
-            new THREE.Color(0x000000),
-            0
-          );
+          gl.setClearColor(new THREE.Color(0x000000), 0);
         }}
       >
         <Scene
