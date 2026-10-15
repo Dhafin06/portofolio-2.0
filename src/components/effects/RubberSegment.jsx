@@ -63,6 +63,7 @@ export default function RubberSegment({
   draggable = true,
   disabled = false,
   className = '',
+  layout = "default",
   'aria-label': ariaLabel = 'Segmented control'
 }) {
   const list = items.map(item => (typeof item === 'string' ? { value: item, label: item } : item));
@@ -330,6 +331,7 @@ export default function RubberSegment({
       aria-label={ariaLabel}
       aria-disabled={disabled || undefined}
       data-equal={equalSlots ? '' : undefined}
+      data-navbar-layout={layout === "navbar" ? "" : undefined}
       data-draggable={draggable && !disabled ? '' : undefined}
       className={`rubber-segment${className ? ` ${className}` : ''}`}
       style={{
@@ -356,6 +358,7 @@ export default function RubberSegment({
           ref={el => {
             itemRefs.current[i] = el;
           }}
+          data-index={i}
           type="button"
           role="radio"
           aria-checked={i === index}
@@ -370,12 +373,16 @@ export default function RubberSegment({
         </button>
       ))}
       <motion.div className="rubber-segment__thumb" aria-hidden="true" style={{clipPath, visibility: index < 0 ? "hidden" : "visible",}}>
-        {list.map(item => (
-          <span key={item.value} className="rubber-segment__item rubber-segment__copy">
-            {item.icon}
-            {item.label}
-          </span>
-        ))}
+        {list.map((item, i) => (
+            <span
+              key={item.value}
+              data-index={i}
+              className="rubber-segment__item rubber-segment__copy"
+            >
+              {item.icon}
+              {item.label}
+            </span>
+          ))}
       </motion.div>
     </div>
   );

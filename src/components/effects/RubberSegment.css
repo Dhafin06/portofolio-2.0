@@ -119,3 +119,49 @@
     transition: opacity 160ms ease;
   }
 }
+
+.rubber-segment[data-navbar-layout] {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: initial;
+  grid-template-columns:
+    minmax(0, 1fr)
+    repeat(4, max-content)
+    minmax(0, 1fr)
+    max-content;
+  align-items: center;
+  justify-content: initial;
+  gap: 4px;
+}
+
+.rubber-segment[data-navbar-layout] .rubber-segment__thumb {
+  grid-template-columns:
+    minmax(0, 1fr)
+    repeat(4, max-content)
+    minmax(0, 1fr)
+    max-content;
+  grid-auto-flow: initial;
+  gap: 4px;
+}
+
+/* Keep the four main links grouped near the center */
+.rubber-segment[data-navbar-layout] [data-index="0"] {
+  grid-column: 2;
+}
+
+.rubber-segment[data-navbar-layout] [data-index="1"] {
+  grid-column: 3;
+}
+
+.rubber-segment[data-navbar-layout] [data-index="2"] {
+  grid-column: 4;
+}
+
+.rubber-segment[data-navbar-layout] [data-index="3"] {
+  grid-column: 5;
+}
+
+/* Contact Me stays on the right */
+.rubber-segment[data-navbar-layout] [data-index="4"] {
+  grid-column: 7;
+}

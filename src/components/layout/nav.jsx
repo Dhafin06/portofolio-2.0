@@ -112,7 +112,8 @@ export function Nav() {
     }
 
     return (
-      pathname === item.href || pathname.startsWith(`${item.href}/`)
+      pathname === item.href ||
+      pathname.startsWith(`${item.href}/`)
     );
   });
 
@@ -121,7 +122,7 @@ export function Nav() {
       aria-label="Primary"
       className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1080px] -translate-x-1/2"
     >
-      <div className="flex h-12 items-center justify-between gap-3 rounded-2xl border border-foreground/10 bg-background px-3 shadow-sm sm:px-4">
+      <div className="flex h-12 items-center gap-3 rounded-2xl border border-foreground/10 bg-background px-3 shadow-sm sm:px-4">
         {/* Logo */}
         <Link
           to="/"
@@ -131,34 +132,24 @@ export function Nav() {
           Dhafin.
         </Link>
 
-        {/* Main Navigation */}
-        <div className="hidden min-w-0 flex-1 justify-center md:flex">
+        {/* One shared Rubber Segment */}
+        <div className="min-w-0 flex-1">
           <RubberSegment
             aria-label="Primary navigation"
-            items={NAV_ITEMS.filter(
-              (item) => item.href !== "/contact",
-            ).map((item) => ({
+            items={NAV_ITEMS.map((item) => ({
               value: item.href,
               label: item.label,
             }))}
-            value={
-              NAV_ITEMS.find(
-                (item) =>
-                  item.href !== "/contact" &&
-                  (item.href === "/"
-                    ? pathname === "/"
-                    : pathname === item.href ||
-                      pathname.startsWith(`${item.href}/`)),
-              )?.href ?? "/"
-            }
+            value={activeItem?.href ?? ""}
             onChange={(href) => navigate(href)}
+            layout="navbar"
             size="md"
             radius={12}
             inset={3}
             equalSlots={false}
-            stretch={100}
+            stretch={0}
             squash={3}
-            speed={1}
+            speed={0.45}
             draggable={false}
             trackColor="transparent"
             thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
@@ -168,28 +159,8 @@ export function Nav() {
           />
         </div>
 
-        {/* Right Actions */}
-        <div className="flex shrink-0 items-center gap-2">
-          <RubberSegment
-            aria-label="Contact navigation"
-            items={[{ value: "/contact", label: "Contact Me" }]}
-            value={pathname === "/contact" ? "/contact" : ""}
-            onChange={() => navigate("/contact")}
-            size="md"
-            radius={12}
-            inset={3}
-            equalSlots
-            stretch={100}
-            squash={3}
-            speed={1}
-            draggable={false}
-            trackColor="transparent"
-            thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
-            textColor="var(--foreground)"
-            activeTextColor="var(--foreground)"
-            className="!bg-transparent"
-          />
-
+        {/* Theme Toggle */}
+        <div className="flex shrink-0 items-center">
           <NavThemeToggle />
         </div>
       </div>

@@ -12,22 +12,15 @@ export function Hero() {
           <FadeIn className="flex flex-col gap-4">
             <p className="text-[20px] font-medium leading-tight tracking-tight text-foreground">
               Hi
-              <span aria-hidden="true" className="mx-0.5">
-                👋
-              </span>
-              , I&rsquo;m Dhafin Aksanidra
+              , I&rsquo;m
             </p>
 
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
-              <span className="block">IT Governance &amp;</span>
-              <span className="block whitespace-nowrap">
-                Enterprise Architecture
-              </span>
-              <span className="block">Enthusiast</span>
+              <span className="block"> Dhafin Aksanidra </span>
             </h1>
 
             <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              Aligning business goals and technology through structured analysis, thoughtful architecture, and effective IT governance.
+              IT Governance & Enterprise Architecture Enthusiast.
             </p>
 
             <HeroCtas />
