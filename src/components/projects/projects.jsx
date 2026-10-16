@@ -54,7 +54,7 @@ const PROJECTS = [
 export function Projects({ withHeadline = false, viewMoreVisible = false, }) {
     const items = viewMoreVisible ? PROJECTS.slice(0, 4) : PROJECTS;
     return (<section className="relative w-full">
-      <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10">
         {withHeadline ? (<FadeIn className="flex flex-col items-center gap-5 pt-12 pb-10 text-center sm:pt-20 sm:pb-14">
             <h2 className="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3rem] lg:text-[3.5rem]">
               My projects

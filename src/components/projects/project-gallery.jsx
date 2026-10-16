@@ -65,7 +65,7 @@ export default function ProjectGallery() {
       className="w-full overflow-hidden py-16 sm:py-24"
       aria-label="Selected projects"
     >
-      <div className="mx-auto w-full max-w-[1180px] px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10">
         {/* Section heading */}
         <div className="mb-8 flex flex-col gap-6 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">

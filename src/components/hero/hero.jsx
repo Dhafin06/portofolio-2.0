@@ -6,7 +6,7 @@ import { HeroProfileCard } from "./profile-card";
 export function Hero() {
   return (
     <section className="relative w-full">
-      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1080px] pt-40 pb-16 sm:pt-55 sm:pb-24">
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1200px] pt-40 pb-16 sm:pt-55 sm:pb-24">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
           <FadeIn className="flex flex-col items-start gap-4">
             <p className="text-lg font-medium leading-tight tracking-tight text-foreground/70">
@@ -24,7 +24,7 @@ export function Hero() {
             <HeroCtas />
           </FadeIn>
 
-          <ScaleUnblur className="flex justify-center md:justify-end">
+          <ScaleUnblur className="flex justify-center md:justify-end md:translate-x-2 lg:translate-x-22">
             <HeroProfileCard />
           </ScaleUnblur>
         </div>

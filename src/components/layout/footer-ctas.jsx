@@ -9,7 +9,7 @@ export function FooterCtas() {
 
       <Link
         to="/projects"
-        className="focus-ring group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-foreground/5"
+        className="focus-ring group inline-flex items-center gap-2 rounded-xl border border-foreground/15 bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-foreground/5"
       >
         View Projects
 

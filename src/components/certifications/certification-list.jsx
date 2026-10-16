@@ -30,7 +30,7 @@ export function CertificationList() {
   return (
     <section
       aria-label="Professional certifications"
-      className="mx-auto w-full max-w-275 px-6 sm:px-10"
+      className="mx-auto w-full max-w-[1280px] px-6 sm:px-10"
     >
       <div className="flex flex-col gap-8 sm:gap-10">
         {CERTIFICATIONS.map((certification, index) => (

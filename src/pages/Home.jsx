@@ -5,11 +5,11 @@ export default function HomePage() {
   return (
     <main
       id="main-content"
-      className="flex flex-1 flex-col gap-16 sm:gap-20"
+      className="flex flex-1 flex-col gap-2 sm:gap-4"
     >
       <Hero />
       <ProjectGallery />
-      <div className="h-12 sm:h-16" />
+      <div className="h-1 sm:h-2" />
     </main>
   );
 }

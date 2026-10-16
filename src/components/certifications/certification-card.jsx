@@ -73,7 +73,7 @@ export function CertificationCard({ certification }) {
             href={certification.file}
             target="_blank"
             rel="noopener noreferrer"
-            className="focus-ring group mt-7 inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/40 hover:bg-foreground/[0.03]"
+            className="focus-ring group mt-7 inline-flex items-center gap-2 rounded-xl border border-foreground/15 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/40 hover:bg-foreground/[0.03]"
           >
             <FileText
               className="h-4 w-4 text-foreground/55"

@@ -120,14 +120,14 @@ export function Nav() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1080px] -translate-x-1/2"
+      className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1280px] -translate-x-1/2"
     >
       <div className="flex h-12 items-center gap-3 rounded-2xl border border-foreground/10 bg-background px-3 shadow-sm sm:px-4">
         {/* Logo */}
         <Link
           to="/"
           aria-label="Go to homepage"
-          className="focus-ring inline-flex h-10 shrink-0 items-center px-2 text-sm font-semibold tracking-tight text-foreground transition-colors"
+          className="focus-ring inline-flex h-10 shrink-0 items-center px-2 text-[15px] font-semibold leading-none tracking-tight text-foreground transition-colors"
         >
           Dhafin.
         </Link>
@@ -143,7 +143,7 @@ export function Nav() {
             value={activeItem?.href ?? ""}
             onChange={(href) => navigate(href)}
             layout="navbar"
-            size="md"
+            size="lg"
             radius={12}
             inset={3}
             equalSlots={false}

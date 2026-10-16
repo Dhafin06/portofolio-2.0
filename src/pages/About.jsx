@@ -1,90 +1,166 @@
-import { Education } from "@/components/about/education";
-import { Experience } from "@/components/about/experience";
-import { Skills } from "@/components/about/skills";
-import { Stack } from "@/components/about/stack";
+
 import Lanyard from "@/components/about/lanyard";
 import { FadeIn } from "@/components/ui/motion-primitives";
+import WhatCanIDo from "@/components/about/what-can-i-do";
+import { CircleCheck } from "lucide-react";
+
+const profileStats = [
+  {
+    label: "PROJECTS",
+    value: "04",
+    detail: "Academic projects",
+  },
+  {
+    label: "CERTIFICATES",
+    value: "02",
+    detail: "Professional credentials",
+  },
+  {
+    label: "EDUCATION",
+    value: "Telkom",
+    detail: "University · 2026",
+  },
+];
+
+const currentFocus = [
+  {
+    title: "Exploring",
+    description:
+      "Business analysis, IT governance, and enterprise architecture.",
+  },
+  {
+    title: "Learning",
+    description:
+      "Deepening knowledge of TOGAF and COBIT 2019",
+  },
+  {
+    title: "Building",
+    description:
+      "Process models, architecture designs, and risk recommendations.",
+  },
+];
+
+function ProfileStats() {
+  return (
+    <div className="grid w-full max-w-[620px] grid-cols-[0.4fr_0.5fr_1.4fr] gap-2 sm:gap-3">
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-white">
+          Projects
+        </p>
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+          04
+        </p>
+      </div>
+
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-white">
+          Certificates
+        </p>
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+          02
+        </p>
+      </div>
+
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-white">
+          Telkom University Graduated
+        </p>
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+          2026
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function CurrentlySection() {
+  return (
+    <div className="mt-8">
+      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-foreground/45">
+        Currently
+      </p>
+
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+        {currentFocus.map((item) => (
+          <div key={item.title} className="min-w-0">
+            <h2 className="text-sm font-medium tracking-tight text-foreground">
+              {item.title}
+            </h2>
+
+            <p className="mt-1 text-xs leading-5 text-foreground/55">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AboutIntro() {
+  return (
+    <section className="mx-auto w-full max-w-[1280px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 lg:px-10">
+      <FadeIn>
+        <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-background">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr]">
+            {/* About Content */}
+            <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-12">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/45">
+                About Me
+              </p>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                  Dhafin Aksanidra
+                </h1>
+
+                <CircleCheck
+                  aria-label="Verified"
+                  className="mt-3 size-7 shrink-0 fill-blue-500 text-white sm:size-9"
+                />
+              </div>
+
+              <div className="mt-8">
+                <ProfileStats />
+              </div>
+
+              {/* Introduction */}
+              <div className="mt-6 max-w-3xl">
+                <p className="text-sm leading-7 text-foreground/65 sm:text-[15px] sm:leading-8">
+                  I&rsquo;m an Information Systems graduate from Telkom
+                  University with project experience in enterprise architecture
+                  using TOGAF, IT governance using COBIT 2019, and risk
+                  management using ISO 31000. Through my academic projects and
+                  experience as a Teaching Assistant and Tools Coordinator at
+                  the System Architecture and Governance Laboratory, I&rsquo;ve
+                  developed an interest in business analysis, IT governance,
+                  and aligning technology solutions with organizational goals.
+                </p>
+              </div>
+
+              <CurrentlySection />
+            </div>
+
+            {/* Lanyard */}
+            <div className="relative min-h-[440px] min-w-0 border-t border-foreground/10 sm:min-h-[520px] lg:min-h-full lg:border-l lg:border-t-0">
+              <Lanyard frontImage="/images/profile.png" />
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+  );
+}
 
 export default function AboutPage() {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
-      {/* About Intro */}
-      <section className="mx-auto w-full max-w-[1155px] px-6 pt-25 pb-16 sm:px-10 sm:pt-30 sm:pb-20">
-        <FadeIn>
-          <div className="overflow-hidden rounded-4xl border border-foreground/8 bg-background">
-            <div className="grid min-h-[480px] grid-cols-1 md:grid-cols-[1.15fr_0.85fr]">
-              {/* About Content */}
-              <div className="flex flex-col justify-center p-7 sm:p-10 md:p-12">
-                <div className="max-w-[30rem]">
-                  <p className="mb-4 text-sm font-medium tracking-tight text-foreground/50">
-                    About Me
-                  </p>
+      <AboutIntro />
 
-                  <h1 className="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-[3rem] lg:text-[3.5rem]">
-                    Hi, I&rsquo;m{" "}
-                    <span className="border-b border-foreground/30 pb-1">
-                      Dhafin Aksanidra
-                    </span>
-                    .
-                  </h1>
+      {/* Separate section */}
+      <WhatCanIDo />
 
-                <div className="mt-6 max-w-[36rem] text-[14px] leading-[1.8] tracking-normal text-foreground/65 sm:text-[15px]">
-                  <p>
-                    I&rsquo;m an Information Systems graduate from Telkom University with
-                    project experience in enterprise architecture using TOGAF, IT governance
-                    using COBIT 2019, and risk management using ISO 31000. Through my academic
-                    projects and experience as a Teaching Assistant and Tools Coordinator at
-                    the System Architecture and Governance Laboratory, I&rsquo;ve developed
-                    an interest in business analysis, IT governance, and aligning technology
-                    solutions with organizational goals.
-                  </p>
-                </div>
-
-                  {/* Quick Info */}
-                  <div className="mt-8 grid max-w-[28rem] grid-cols-2 gap-6 border-t border-foreground/8 pt-6">
-                    <div>
-                      <p className="text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-                        IT Governance
-                      </p>
-                      <p className="mt-1 text-xs tracking-tight text-foreground/50 sm:text-sm">
-                        Risk & Quality
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-                        Enteprise 
-                      </p>
-                      <p className="mt-1 text-xs tracking-tight text-foreground/50 sm:text-sm">
-                        Arhitecture
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Lanyard */}
-              <div className="relative h-[420px] min-w-0 border-t border-foreground/8 md:h-[560px] md:border-t-0 md:border-l">
-                <Lanyard frontImage="/images/profile.png" />
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
-
-      {/* Experience, Education, Skills, Stack */}
-      <section className="mx-auto w-full max-w-[52rem] px-6 pb-20 sm:px-10 sm:pb-28">
-        <FadeIn delay={0.1}>
-          <div className="flex flex-col gap-10">
-            <Experience />
-            <Education />
-            <Skills />
-            <Stack />
-          </div>
-        </FadeIn>
-      </section>
-
-      <div className="h-12 sm:h-16" />
+      <div className="h-8 sm:h-12" />
     </main>
   );
 }
