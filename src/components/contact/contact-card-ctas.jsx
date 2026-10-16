@@ -6,7 +6,7 @@ export function ContactCardCtas() {
       <a
         href="/cv/Dhafin-Aksanidra-CV.pdf"
         download="Dhafin-Aksanidra-CV.pdf"
-        className="focus-ring group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity duration-300 hover:opacity-85"
+        className="focus-ring group inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity duration-300 hover:opacity-85"
       >
         Download CV
         <Download

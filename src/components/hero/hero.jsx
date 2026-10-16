@@ -1,38 +1,31 @@
+
 import { HeroCtas } from "./hero-ctas";
 import { FadeIn, ScaleUnblur } from "@/components/ui/motion-primitives";
-import { SpotlightImage } from "./spotlight-image";
-
-const PORTRAIT_SRC = "/images/profile.png";
+import { HeroProfileCard } from "./profile-card";
 
 export function Hero() {
   return (
     <section className="relative w-full">
-      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1080px] pt-44 pb-24 sm:pt-56 sm:pb-32">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-8">
-          <FadeIn className="flex flex-col gap-4">
-            <p className="text-[20px] font-medium leading-tight tracking-tight text-foreground">
-              Hi
-              , I&rsquo;m
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-[1080px] pt-40 pb-16 sm:pt-55 sm:pb-24">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
+          <FadeIn className="flex flex-col items-start gap-4">
+            <p className="text-lg font-medium leading-tight tracking-tight text-foreground/70">
+              Hi, I’m
             </p>
 
-            <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
-              <span className="block"> Dhafin Aksanidra </span>
+            <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Dhafin Aksanidra
             </h1>
 
-            <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              IT Governance & Enterprise Architecture Enthusiast.
+            <p className="max-w-[34ch] text-lg leading-relaxed tracking-tight text-foreground/65 sm:text-xl">
+              IT Governance & Enterprise Architecture Enthusiast
             </p>
 
             <HeroCtas />
           </FadeIn>
 
-          <ScaleUnblur className="flex justify-stretch md:justify-end">
-            <div className="relative aspect-square w-full md:max-w-105">
-              <SpotlightImage
-                src={PORTRAIT_SRC}
-                alt="Dhafin Aksanidra portrait"
-              />
-            </div>
+          <ScaleUnblur className="flex justify-center md:justify-end">
+            <HeroProfileCard />
           </ScaleUnblur>
         </div>
       </div>

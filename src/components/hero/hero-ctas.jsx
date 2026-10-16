@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { LayoutGroup, motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ContactButton } from "@/components/contact/contact-button";
+import { Download } from "lucide-react";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -13,7 +13,17 @@ export function HeroCtas() {
         transition={{ layout: { duration: 0.55, ease: EASE } }}
         className="mt-2 flex flex-wrap items-center gap-3"
       >
-        <ContactButton />
+      <a
+        href="/cv/Dhafin-Aksanidra-CV.pdf"
+        download="Dhafin-Aksanidra-CV.pdf"
+        className="focus-ring group inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity duration-300 hover:opacity-85"
+      >
+        Download CV
+        <Download
+          className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+          aria-hidden="true"
+        />
+      </a>
 
         <motion.div
           layout
