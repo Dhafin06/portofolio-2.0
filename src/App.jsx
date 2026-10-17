@@ -1,15 +1,24 @@
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { useEffect } from "react";
+
 import { Nav } from "@/components/layout/nav";
 import { PageBackdrop } from "@/components/layout/page-backdrop";
 import { SkipToContent } from "@/components/layout/skip-to-content";
 import { Providers } from "@/components/layout/providers";
 import { Footer } from "@/components/layout/footer";
+import ScrollToTop from "@/components/layout/scroll-to-top";
+
 import HomePage from "@/pages/Home";
 import AboutPage from "@/pages/About";
 import ProjectsPage from "@/pages/Projects";
 import ContactPage from "@/pages/Contact";
-import ScrollToTop from "@/components/layout/scroll-to-top";
 import CertificationsPage from "@/pages/Certifications";
 
 const ROUTE_META = {
@@ -29,6 +38,10 @@ const ROUTE_META = {
     title: "Contact | Portfolio",
     description: "Get in touch with Dhafin Aksanidra.",
   },
+  "/certifications": {
+    title: "Certifications | Portfolio",
+    description: "Certifications earned by Dhafin Aksanidra.",
+  },
 };
 
 function RouteMetadata() {
@@ -37,7 +50,11 @@ function RouteMetadata() {
 
   useEffect(() => {
     document.title = meta.title;
-    const description = document.querySelector('meta[name="description"]');
+
+    const description = document.querySelector(
+      'meta[name="description"]'
+    );
+
     description?.setAttribute("content", meta.description);
   }, [meta]);
 
@@ -46,49 +63,38 @@ function RouteMetadata() {
 
 function SiteShell({ children }) {
   const { pathname } = useLocation();
-
   const showFooter = pathname !== "/contact";
+
   return (
     <Providers>
-      <div className="site-frame site-frame--top" aria-hidden="true" />
-          <div className="site-frame site-frame--left" aria-hidden="true" />
-          <div className="site-frame site-frame--right" aria-hidden="true" />
+  <div className="relative isolate min-h-screen">
+    <PageBackdrop />
 
-          <svg
-            className="site-corner site-corner--top-left"
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z"
-              fill="currentColor"
-            />
-          </svg>
-          <svg
-            className="site-corner site-corner--top-right"
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z"
-              fill="currentColor"
-            />
-          </svg>
+    <div className="relative z-10">
+      <div
+        className="site-frame site-frame--top"
+        aria-hidden="true"
+      />
+      <div
+        className="site-frame site-frame--left"
+        aria-hidden="true"
+      />
+      <div
+        className="site-frame site-frame--right"
+        aria-hidden="true"
+      />
 
-          <SkipToContent />
-          <PageBackdrop />
-          <Nav />
+      {/* Pertahankan kedua SVG site-corner di sini */}
+
+      <SkipToContent />
+      <Nav />
+
       {children}
+
       {showFooter && <Footer />}
-    </Providers>
+    </div>
+  </div>
+</Providers>
   );
 }
 
@@ -97,14 +103,21 @@ export default function App() {
     <BrowserRouter>
       <RouteMetadata />
       <ScrollToTop />
+
       <SiteShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/certifications" element={<CertificationsPage />} />
+          <Route
+            path="/certifications"
+            element={<CertificationsPage />}
+          />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+          />
         </Routes>
       </SiteShell>
     </BrowserRouter>
