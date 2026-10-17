@@ -319,7 +319,15 @@ const ProfileCard = ({
             <span className="profile-card__holo-shift" />
           </span>
           {avatarUrl && (
-            <img className="profile-card__photo" src={avatarUrl} alt={name || ''} loading="lazy" draggable={false} />
+            <img
+              className="profile-card__photo"
+              src={avatarUrl}
+              alt={name}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              draggable={false}
+            />
           )}
           <span className="profile-card__scrim" />
           <span className="profile-card__tile-rim" />

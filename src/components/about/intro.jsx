@@ -1,6 +1,10 @@
 
 import { CircleCheck } from "lucide-react";
-import Lanyard from "@/components/effects/Lanyard";
+import { lazy, Suspense } from "react";
+
+const Lanyard = lazy(
+  () => import("@/components/effects/Lanyard")
+);
 
 const currentFocus = [
   {
@@ -122,26 +126,35 @@ export default function AboutIntro() {
 
           {/* React Bits Lanyard */}
           <div className="relative min-h-[440px] min-w-0 border-t border-foreground/10 sm:min-h-[520px] lg:min-h-[600px] lg:border-l lg:border-t-0">
-            <Lanyard
-              frontImage="/images/profile.png"
-              imageFit="cover"
-              orientation="portrait"
-              finish="matte"
-              size={0.35}
-              anchor="center"
-              strapLength={0.55}
-              strapColor="#111111"
-              strapWidth={0.65}
-              metal="graphite"
-              gravity={1}
-              damping={0.5}
-              elasticity={0.5}
-              breeze={0.5}
-              interactive={true}
-              intro={true}
-              className="h-full w-full"
-            />
-          </div>
+            <Suspense
+                fallback={
+                <div
+                    className="h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[600px]"
+                    aria-label="Loading interactive 3D profile"
+                />
+                }
+            >
+                <Lanyard
+                frontImage="/images/profile.png"
+                imageFit="cover"
+                orientation="portrait"
+                finish="matte"
+                size={0.35}
+                anchor="center"
+                strapLength={0.55}
+                strapColor="#111111"
+                strapWidth={0.65}
+                metal="graphite"
+                gravity={1}
+                damping={0.5}
+                elasticity={0.5}
+                breeze={0.5}
+                interactive={true}
+                intro={true}
+                className="h-full w-full"
+                />
+            </Suspense>
+            </div>
         </div>
       </div>
     </section>
