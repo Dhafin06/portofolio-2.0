@@ -162,7 +162,7 @@ function Band({
 
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.flipY = baseMap.flipY;
-    texture.anisotropy = 16;
+    texture.anisotropy = 8;
     texture.needsUpdate = true;
 
     return texture;
@@ -175,13 +175,16 @@ function Band({
     materials.base.map,
   ]);
 
+  // Seed the rope curve with the chain's initial world positions.
+  // Starting all points at [0, 0, 0] can make the first rendered frame
+  // look like the lanyard suddenly stretches from the scene origin.
   const curve = useRef(
     new THREE.CatmullRomCurve3(
       [
-        new THREE.Vector3(),
-        new THREE.Vector3(),
-        new THREE.Vector3(),
-        new THREE.Vector3(),
+        new THREE.Vector3(1.5, 4, 0),
+        new THREE.Vector3(1, 4, 0),
+        new THREE.Vector3(0.5, 4, 0),
+        new THREE.Vector3(0, 4.6, 0),
       ],
       false,
       "chordal"
@@ -394,7 +397,7 @@ function Band({
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={cardMap}
-                map-anisotropy={16}
+                map-anisotropy={8}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}
@@ -541,7 +544,7 @@ function Lanyard({
           position: [0, 0, 25],
           fov: 20,
         }}
-        dpr={[1, isMobile ? 1.5 : 2]}
+        dpr={[1, 1.5]}
         gl={{
           alpha: true,
           antialias: true,

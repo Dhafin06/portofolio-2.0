@@ -100,54 +100,52 @@ function CurrentlySection() {
 function AboutIntro() {
   return (
     <section className="mx-auto w-full max-w-[1280px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 lg:px-10">
-      <FadeIn>
-        <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-background">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr]">
-            {/* About Content */}
-            <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-12">
-              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/45">
-                About Me
+      <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-background">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr]">
+          {/* About Content */}
+          <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-12">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/45">
+              About Me
+            </p>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                Dhafin Aksanidra
+              </h1>
+
+              <CircleCheck
+                aria-label="Verified"
+                className="mt-3 size-7 shrink-0 fill-blue-500 text-white sm:size-9"
+              />
+            </div>
+
+            <div className="mt-8">
+              <ProfileStats />
+            </div>
+
+            {/* Introduction */}
+            <div className="mt-6 max-w-3xl">
+              <p className="text-sm leading-7 text-foreground/65 sm:text-[15px] sm:leading-8">
+                I&rsquo;m an Information Systems graduate from Telkom
+                University with project experience in enterprise architecture
+                using TOGAF, IT governance using COBIT 2019, and risk
+                management using ISO 31000. Through my academic projects and
+                experience as a Teaching Assistant and Tools Coordinator at
+                the System Architecture and Governance Laboratory, I&rsquo;ve
+                developed an interest in business analysis, IT governance,
+                and aligning technology solutions with organizational goals.
               </p>
-
-              <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  Dhafin Aksanidra
-                </h1>
-
-                <CircleCheck
-                  aria-label="Verified"
-                  className="mt-3 size-7 shrink-0 fill-blue-500 text-white sm:size-9"
-                />
-              </div>
-
-              <div className="mt-8">
-                <ProfileStats />
-              </div>
-
-              {/* Introduction */}
-              <div className="mt-6 max-w-3xl">
-                <p className="text-sm leading-7 text-foreground/65 sm:text-[15px] sm:leading-8">
-                  I&rsquo;m an Information Systems graduate from Telkom
-                  University with project experience in enterprise architecture
-                  using TOGAF, IT governance using COBIT 2019, and risk
-                  management using ISO 31000. Through my academic projects and
-                  experience as a Teaching Assistant and Tools Coordinator at
-                  the System Architecture and Governance Laboratory, I&rsquo;ve
-                  developed an interest in business analysis, IT governance,
-                  and aligning technology solutions with organizational goals.
-                </p>
-              </div>
-
-              <CurrentlySection />
             </div>
 
-            {/* Lanyard */}
-            <div className="relative min-h-[440px] min-w-0 border-t border-foreground/10 sm:min-h-[520px] lg:min-h-full lg:border-l lg:border-t-0">
-              <Lanyard frontImage="/images/profile.png" />
-            </div>
+            <CurrentlySection />
+          </div>
+
+          {/* Lanyard */}
+          <div className="relative min-h-[440px] min-w-0 border-t border-foreground/10 sm:min-h-[520px] lg:min-h-full lg:border-l lg:border-t-0">
+            <Lanyard frontImage="/images/profile.png" />
           </div>
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }
