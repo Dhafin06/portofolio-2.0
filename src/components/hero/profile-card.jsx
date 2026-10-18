@@ -4,7 +4,7 @@ import ProfileCardComponent from "@/components/effects/ProfileCard";
 export function HeroProfileCard() {
   return (
     <ProfileCardComponent
-        avatarUrl="/images/profile.png"
+        avatarUrl="/images/profile.webp"
         name="Dhafin Aksanidra"
         handle="dhafin.as"
         title=""

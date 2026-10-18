@@ -135,7 +135,8 @@ export default function AboutIntro() {
                 }
             >
                 <Lanyard
-                frontImage="/images/profile.png"
+                frontImage="/images/profile.webp"
+                strapImage= "/images/lanyard.webp"
                 imageFit="cover"
                 orientation="portrait"
                 finish="matte"
