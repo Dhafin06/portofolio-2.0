@@ -28,28 +28,28 @@ function ProfileStats() {
   return (
     <div className="grid w-full max-w-[620px] grid-cols-[0.4fr_0.5fr_1.4fr] gap-2 sm:gap-3">
       <div className="min-w-0">
-        <p className="text-sm font-medium text-white">
+        <p className="text-sm font-medium text-foreground">
           Projects
         </p>
-        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">
           04
         </p>
       </div>
 
       <div className="min-w-0">
-        <p className="text-sm font-medium text-white">
+        <p className="text-sm font-medium text-foreground">
           Certificates
         </p>
-        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">
           02
         </p>
       </div>
 
       <div className="min-w-0">
-        <p className="text-sm font-medium text-white">
+        <p className="text-sm font-medium text-foreground">
           Telkom University Graduated
         </p>
-        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-white tabular-nums sm:text-3xl">
+        <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">
           2026
         </p>
       </div>

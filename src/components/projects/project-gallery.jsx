@@ -1,9 +1,6 @@
 
 import { useState } from "react";
-import {
-  ArrowRight,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import DepthCarousel from "@/components/effects/DepthCarousel";
 

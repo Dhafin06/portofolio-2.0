@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, Compass, Layers, LineChart, Sparkles, Wand2, } from "lucide-react";
+import { ArrowRight, Bot, Compass, Layers, LineChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FadeIn } from "@/components/ui/motion-primitives";
 const PROJECTS = [
