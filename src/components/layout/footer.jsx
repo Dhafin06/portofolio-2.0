@@ -17,11 +17,6 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
     imageSrc: "/icons/linkedin.svg",
   },
-  {
-    href: "#",
-    label: "GitHub",
-    imageSrc: "/icons/github.svg",
-  },
 ];
 
 export function Footer() {
