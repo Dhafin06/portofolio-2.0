@@ -4,6 +4,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RubberSegment from "@/components/effects/RubberSegment";
+import StaggeredMenu from "@/components/effects/StaggeredMenu";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -83,15 +84,14 @@ function NavThemeToggle() {
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`absolute inset-0 h-4 w-4 transition-all duration-300 ${
             isDark
               ? "rotate-0 scale-100 opacity-100"
               : "-rotate-90 scale-0 opacity-0"
           }`}
         />
-
         <Moon
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`absolute inset-0 h-4 w-4 transition-all duration-300 ${
             mounted && !isDark
               ? "rotate-0 scale-100 opacity-100"
               : "rotate-90 scale-0 opacity-0"
@@ -117,53 +117,84 @@ export function Nav() {
     );
   });
 
+  const mobileItems = NAV_ITEMS.map((item) => ({
+    label: item.label,
+    link: item.href,
+    ariaLabel: item.label,
+  }));
+
   return (
-    <nav
-      aria-label="Primary"
-      className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-[1280px] -translate-x-1/2"
-    >
-      <div className="flex h-12 items-center gap-3 rounded-2xl border border-foreground/10 bg-background px-3 shadow-sm sm:px-4">
-        {/* Logo */}
-        <Link
-          to="/"
-          aria-label="Go to homepage"
-          className="focus-ring inline-flex h-10 shrink-0 items-center px-2 text-[15px] font-semibold leading-none tracking-tight text-foreground transition-colors"
-        >
-          Dhafin.
-        </Link>
+    <>
+      {/* Desktop Navigation */}
+      <nav
+        aria-label="Primary"
+        className="fixed left-1/2 top-6 z-50 hidden w-[calc(100%-2rem)] max-w-[1280px] -translate-x-1/2 md:block"
+      >
+        <div className="flex h-12 items-center gap-3 rounded-2xl border border-foreground/10 bg-background/95 px-3 shadow-sm backdrop-blur-xl sm:px-4">
+          <Link
+            to="/"
+            aria-label="Go to homepage"
+            className="focus-ring inline-flex h-10 shrink-0 items-center px-2 text-[15px] font-semibold leading-none tracking-tight text-foreground transition-colors"
+          >
+            Dhafin.
+          </Link>
 
-        {/* One shared Rubber Segment */}
-        <div className="min-w-0 flex-1">
-          <RubberSegment
-            aria-label="Primary navigation"
-            items={NAV_ITEMS.map((item) => ({
-              value: item.href,
-              label: item.label,
-            }))}
-            value={activeItem?.href ?? ""}
-            onChange={(href) => navigate(href)}
-            layout="navbar"
-            size="lg"
-            radius={12}
-            inset={3}
-            equalSlots={false}
-            stretch={0}
-            squash={3}
-            speed={0.45}
-            draggable={false}
-            trackColor="transparent"
-            thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
-            textColor="var(--foreground)"
-            activeTextColor="var(--foreground)"
-            className="!bg-transparent"
-          />
-        </div>
+          <div className="min-w-0 flex-1">
+            <RubberSegment
+              aria-label="Primary navigation"
+              items={NAV_ITEMS.map((item) => ({
+                value: item.href,
+                label: item.label,
+              }))}
+              value={activeItem?.href ?? ""}
+              onChange={(href) => navigate(href)}
+              layout="navbar"
+              size="lg"
+              radius={12}
+              inset={3}
+              equalSlots={false}
+              stretch={0}
+              squash={3}
+              speed={0.45}
+              draggable={false}
+              trackColor="transparent"
+              thumbColor="color-mix(in srgb, var(--foreground) 8%, var(--background))"
+              textColor="var(--foreground)"
+              activeTextColor="var(--foreground)"
+              className="!bg-transparent"
+            />
+          </div>
 
-        {/* Theme Toggle */}
-        <div className="flex shrink-0 items-center">
-          <NavThemeToggle />
+          <div className="flex shrink-0 items-center">
+            <NavThemeToggle />
+          </div>
         </div>
+      </nav>
+
+      {/* Mobile Staggered Menu */}
+      <div className="md:hidden">
+        <StaggeredMenu
+          position="right"
+          isFixed={true}
+          logoText="Dhafin."
+          items={mobileItems}
+          displaySocials={false}
+          displayItemNumbering={true}
+          menuButtonColor="var(--foreground)"
+          openMenuButtonColor="var(--foreground)"
+          changeMenuColorOnOpen={false}
+          colors={[
+            "color-mix(in srgb, var(--background) 92%, transparent)",
+            "color-mix(in srgb, var(--background) 82%, transparent)",
+          ]}
+          accentColor="var(--foreground)"
+          onItemClick={(href) => {
+            if (href !== pathname) {
+              navigate(href);
+            }
+          }}
+        />
       </div>
-    </nav>
+    </>
   );
 }
