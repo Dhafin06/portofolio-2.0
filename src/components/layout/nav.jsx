@@ -178,6 +178,15 @@ export function Nav() {
           isFixed={true}
           logoText="Dhafin."
           items={mobileItems}
+          mobileFooter={
+            <div className="flex items-center justify-between gap-3">
+              <span className="sm-mobile-footer-label text-sm font-medium text-foreground">
+                Appearance
+              </span>
+
+              <NavThemeToggle />
+            </div>
+          }
           displaySocials={false}
           displayItemNumbering={true}
           menuButtonColor="var(--foreground)"

@@ -12,9 +12,9 @@ export const StaggeredMenu = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
   logoText = 'Dhafin.',
   onItemClick,
+  mobileFooter,
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
   accentColor = '#5227FF',
@@ -96,6 +96,7 @@ export const StaggeredMenu = ({
     itemEntranceTweenRef.current?.kill();
 
     const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+    const footerLabel = panel.querySelector('.sm-mobile-footer-label');
     const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
     const socialTitle = panel.querySelector('.sm-socials-title');
     const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
@@ -106,6 +107,13 @@ export const StaggeredMenu = ({
 
     if (itemEls.length) {
       gsap.set(itemEls, { yPercent: 140, rotate: 10 });
+    }
+    if (footerLabel) {
+      gsap.set(footerLabel, {
+        y: 20,
+        opacity: 0,
+        rotate: 0,
+      });
     }
     if (numberEls.length) {
       gsap.set(numberEls, { '--sm-num-opacity': 0 });
@@ -133,16 +141,16 @@ export const StaggeredMenu = ({
     );
 
     if (itemEls.length) {
-      const itemsStartRatio = 0.15;
+      const itemsStartRatio = 0.1;
       const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
       tl.to(
         itemEls,
         {
           yPercent: 0,
           rotate: 0,
-          duration: 1,
+          duration: 0.7,
           ease: 'power4.out',
-          stagger: { each: 0.1, from: 'start' }
+          stagger: { each: 0.07, from: 'start' }
         },
         itemsStart
       );
@@ -158,6 +166,21 @@ export const StaggeredMenu = ({
           itemsStart + 0.1
         );
       }
+    }
+
+    if (footerLabel) {
+        const footerStart = panelInsertTime + panelDuration * 0.85;
+
+      tl.to(
+        footerLabel,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power4.out',
+        },
+        footerStart
+      );
     }
 
     if (socialTitle || socialLinks.length) {
@@ -494,6 +517,13 @@ export const StaggeredMenu = ({
               </li>
             )}
           </ul>
+
+          {mobileFooter && (
+            <div className="sm-mobile-footer">
+              {mobileFooter}
+            </div>
+          )}
+
           {displaySocials && socialItems && socialItems.length > 0 && (
             <div className="sm-socials" aria-label="Social links">
               <h3 className="sm-socials-title">Socials</h3>

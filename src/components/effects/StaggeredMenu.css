@@ -1,8 +1,3 @@
-
-/* ========================================
-   Staggered Menu - Base
-======================================== */
-
 .staggered-menu-wrapper {
   position: relative;
   z-index: 40;
@@ -39,10 +34,6 @@
 .staggered-menu-header > * {
   pointer-events: auto;
 }
-
-/* ========================================
-   Logo
-======================================== */
 
 .sm-logo {
   display: flex;
@@ -238,10 +229,6 @@
   user-select: none;
 }
 
-/* ========================================
-   Social Links
-======================================== */
-
 .sm-socials {
   display: flex;
   flex-direction: column;
@@ -332,10 +319,6 @@
   }
 }
 
-/* ========================================
-   Mobile Portfolio Navigation
-======================================== */
-
 @media (max-width: 767px) {
   .staggered-menu-wrapper.fixed-wrapper {
     overflow: hidden;
@@ -358,11 +341,11 @@
     border-radius: 1rem;
     background: color-mix(
       in srgb,
-      var(--background) 92%,
+      var(--background) 82%,
       transparent
     );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     pointer-events: auto;
   }
 
@@ -468,4 +451,20 @@
   flex: 0 0 2px;
   border-radius: 999px;
   background: currentColor;
+}
+
+.sm-mobile-footer {
+  margin-top: 6px;
+  padding: 8px 12px 8px;
+  border-top: 1px solid var(--sm-footer-border, rgba(255, 255, 255, 0.12));
+}
+
+.sm-mobile-footer > * {
+  max-width: 100%;
+}
+
+.sm-mobile-footer-label {
+  display: inline-block;
+  transform-origin: left center;
+  will-change: transform, opacity;
 }
