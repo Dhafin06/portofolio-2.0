@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import DepthCarousel from "@/components/effects/DepthCarousel";
-import { PROJECTS } from "./projects";
+import { PROJECTS } from "./data-projects";
 
 export default function ProjectGallery() {
   const [activeIndex, setActiveIndex] = useState(0);

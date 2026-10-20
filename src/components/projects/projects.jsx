@@ -2,7 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FadeIn } from "@/components/ui/motion-primitives";
-import { PROJECTS } from "./projects";
+import { PROJECTS } from "./data-projects";
 
 export function Projects({
   withHeadline = false,
