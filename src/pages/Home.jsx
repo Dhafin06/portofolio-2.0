@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <main
       id="main-content"
-      className="flex flex-1 flex-col gap-2 sm:gap-4"
+      className="flex flex-1 flex-col gap-4 sm:gap-8"
     >
       <Hero />
       <ProjectGallery />

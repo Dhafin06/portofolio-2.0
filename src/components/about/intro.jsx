@@ -26,9 +26,9 @@ const currentFocus = [
 
 function ProfileStats() {
   return (
-    <div className="grid w-full max-w-[620px] grid-cols-[0.4fr_0.5fr_1.4fr] gap-2 sm:gap-3">
+    <div className="grid w-full max-w-[620px] grid-cols-[0.8fr_0.9fr_1.5fr] gap-3 sm:grid-cols-[0.4fr_0.5fr_1.4fr] sm:gap-3">
       <div className="min-w-0">
-        <p className="text-sm font-medium text-foreground">
+        <p className="text-sm font-medium leading-snug text-foreground">
           Projects
         </p>
         <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">
@@ -37,7 +37,7 @@ function ProfileStats() {
       </div>
 
       <div className="min-w-0">
-        <p className="text-sm font-medium text-foreground">
+        <p className="text-sm font-medium leading-snug text-foreground">
           Certificates
         </p>
         <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">
@@ -46,7 +46,7 @@ function ProfileStats() {
       </div>
 
       <div className="min-w-0">
-        <p className="text-sm font-medium text-foreground">
+        <p className="text-sm font-medium leading-snug text-foreground">
           Telkom University Graduated
         </p>
         <p className="mt-2 text-2xl font-semibold leading-none tracking-tight text-foreground tabular-nums sm:text-3xl">

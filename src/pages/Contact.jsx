@@ -17,7 +17,7 @@ export default function ContactPage() {
             </span>
 
             <h1 className="max-w-[8ch] text-[4.5rem] font-semibold leading-[0.9] tracking-[-0.055em] text-foreground sm:text-[5.5rem] lg:text-[6.5rem]">
-              Let&apos;s work together.
+              Let&apos;s work together!
             </h1>
 
             <p className="max-w-[34rem] text-base leading-7 text-foreground/60 sm:text-lg">

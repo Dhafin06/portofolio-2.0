@@ -2,6 +2,7 @@
 import { HeroCtas } from "./hero-ctas";
 import { FadeIn, ScaleUnblur } from "@/components/ui/motion-primitives";
 import { HeroProfileCard } from "./profile-card";
+import TextType from "@/components/effects/TextType";
 
 export function Hero() {
   return (
@@ -16,9 +17,17 @@ export function Hero() {
               Hi, I’m
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Dhafin Aksanidra
-            </h1>
+            <TextType
+              as="h1"
+              text="Dhafin Aksanidra"
+              className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+              typingSpeed={75}
+              initialDelay={300}
+              cursorStyle="bar"
+              loop={false}
+              showCursor={true}
+              cursorGlide={true}
+            />
 
             <p className="max-w-[34ch] text-lg leading-relaxed tracking-tight text-foreground/65 sm:text-xl">
               IT Governance & Enterprise Architecture Enthusiast

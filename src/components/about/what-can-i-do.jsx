@@ -14,8 +14,9 @@ const tools = [
   { name: "Jira", logo: "/icons/jira.svg" },
   { name: "Notion", logo: "/icons/notion.svg" },
   { name: "Figma", logo: "/icons/figma.svg" },
-  { name: "Google Drive", logo: "/icons/google-drive.svg" },
+  { name: "Looker Studio", logo: "/icons/looker.svg" },
   { name: "Microsoft Teams", logo: "/icons/microsoft-teams.svg" },
+  { name: "Tableau", logo: "/icons/tableau.svg" },
 ];
 
 const capabilities = [
