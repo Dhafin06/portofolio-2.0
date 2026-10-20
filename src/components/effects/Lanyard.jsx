@@ -911,30 +911,68 @@ const Lanyard = ({
       start();
     };
 
+    
     const frameView = () => {
       const s = settingsRef.current;
-      const aspect = view.width / view.height;
-      let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
+      const aspect = view.width / Math.max(1, view.height);
+
+      const targetHeight =
+        layout.height / clamp(s.size, 0.15, 0.9);
+
       const minimumWidth = layout.width / 0.72;
-      if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
+
+      const viewHeight = Math.max(
+        targetHeight,
+        minimumWidth / aspect
+      );
+
       const viewWidth = viewHeight * aspect;
+
       camera.aspect = aspect;
-      camera.position.set(0, 0, viewHeight / 2 / Math.tan((FOV * Math.PI) / 360));
+      camera.position.set(
+        0,
+        0,
+        viewHeight / (2 * Math.tan((FOV * Math.PI) / 360))
+      );
+
       camera.lookAt(0, 0, 0);
       camera.updateProjectionMatrix();
       camera.updateMatrixWorld();
-      foilUniforms.foilKey.value.set(-2.5, 4, 6).normalize().transformDirection(camera.matrixWorldInverse);
-      foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
-      foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
-      const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
+
+      foilUniforms.foilKey.value
+        .set(-2.5, 4, 6)
+        .normalize()
+        .transformDirection(camera.matrixWorldInverse);
+
+      foilUniforms.foilFill.value
+        .set(3, -1, 4)
+        .normalize()
+        .transformDirection(camera.matrixWorldInverse);
+
+      foilUniforms.foilTop.value
+        .set(0.5, 4.5, 8)
+        .normalize()
+        .transformDirection(camera.matrixWorldInverse);
+
+      const anchorX =
+        ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
+
       const anchorY = viewHeight / 2 + 0.2;
-      const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
-      const hangTop = cardTop + (layout.hangY - layout.height / 2);
+
+      const cardTop =
+        viewHeight / 2 -
+        viewHeight *
+          mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+
+      const hangTop =
+        cardTop + (layout.hangY - layout.height / 2);
+
       sim.anchor.set(anchorX, anchorY, 0);
       configureSimulation(sim, layout, anchorY - hangTop);
       sim.nodes[0].copy(sim.anchor);
       sim.previous[0].copy(sim.anchor);
     };
+
 
     const apply = () => {
       const s = settingsRef.current;
@@ -1244,10 +1282,18 @@ const Lanyard = ({
     canvas.addEventListener('touchstart', onTouchStart, { passive: false });
 
     const resize = () => {
-      view.width = Math.max(1, container.clientWidth);
-      view.height = Math.max(1, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const width = Math.max(1, container.clientWidth);
+      const height = Math.max(1, container.clientHeight);
+
+      view.width = width;
+      view.height = height;
+
+      renderer.setPixelRatio(
+        Math.min(window.devicePixelRatio || 1, 2)
+      );
+
       renderer.setSize(view.width, view.height, false);
+
       apply();
       render();
     };

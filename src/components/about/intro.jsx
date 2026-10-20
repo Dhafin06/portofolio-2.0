@@ -85,9 +85,8 @@ export default function AboutIntro() {
   return (
     <section className="mx-auto w-full max-w-[1280px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 lg:px-10">
       <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-background">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr]">
-          {/* About Content */}
-          <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-12">
+        <div className="grid min-w-0 grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">          {/* About Content */}
+          <div className="flex min-w-0 flex-col justify-start p-6 sm:p-9 lg:p-12">
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/45">
               About Me
             </p>
@@ -125,18 +124,18 @@ export default function AboutIntro() {
           </div>
 
           {/* React Bits Lanyard */}
-          <div className="relative min-h-[440px] min-w-0 border-t border-foreground/10 sm:min-h-[520px] lg:min-h-[600px] lg:border-l lg:border-t-0">
+          <div className="relative h-[440px] min-w-0 overflow-hidden border-t border-foreground/10 sm:h-[500px] lg:h-[600px] lg:border-l lg:border-t-0">
             <Suspense
-                fallback={
+              fallback={
                 <div
-                    className="h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[600px]"
-                    aria-label="Loading interactive 3D profile"
+                  className="h-full w-full"
+                  aria-label="Loading interactive 3D profile"
                 />
-                }
+              }
             >
-                <Lanyard
+              <Lanyard
                 frontImage="/images/profile.webp"
-                strapImage= "/images/lanyard.webp"
+                strapImage="/images/lanyard.webp"
                 imageFit="cover"
                 orientation="portrait"
                 finish="matte"
@@ -153,9 +152,9 @@ export default function AboutIntro() {
                 interactive={true}
                 intro={true}
                 className="h-full w-full"
-                />
+              />
             </Suspense>
-            </div>
+          </div>
         </div>
       </div>
     </section>
