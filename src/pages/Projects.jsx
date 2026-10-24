@@ -1,4 +1,5 @@
 import { Projects } from "@/components/projects/projects";
+import DevProjects from "@/components/projects/dev-projects";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import TextType from "@/components/effects/TextType";
 export default function ProjectsPage() {
@@ -7,7 +8,7 @@ export default function ProjectsPage() {
         <FadeIn className="flex flex-col items-center gap-5 text-center">
           <TextType
             as="h1"
-            text="My recent work"
+            text="My recent projects"
             className="font-sans text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3.25rem] lg:text-[3.75rem]"
             typingSpeed={60}
             initialDelay={300}
@@ -22,6 +23,7 @@ export default function ProjectsPage() {
         </FadeIn>
       </section>
       <Projects />
+      <DevProjects />
       <div className="h-12 sm:h-16"/>
     </main>);
 }
