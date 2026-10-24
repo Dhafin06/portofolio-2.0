@@ -18,17 +18,6 @@ export const DEV_PROJECTS = [
     alt: "Strave web application interface",
   },
   {
-    id: "tradegate",
-    title: "TradeGate",
-    category: "Inventory & Transaction Management",
-    icon: ShoppingBag,
-    description:
-      "Developed a web-based system for product and inventory management, purchasing, order processing, balance management, and document handling.",
-    tags: ["Laravel", "MySQL", "API", "Inventory Management"],
-    image: "/images/tradegate.webp",
-    alt: "TradeGate inventory and transaction management interface",
-  },
-  {
     id: "siaga-banjir",
     title: "Siaga Banjir",
     category: "Flood Information & Mitigation",
@@ -38,5 +27,16 @@ export const DEV_PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript", "Leaflet.js"],
     image: "/images/siaga-banjir.webp",
     alt: "Siaga Banjir flood information and risk mapping website",
+  },
+  {
+    id: "tradegate",
+    title: "TradeGate",
+    category: "Inventory & Transaction Management",
+    icon: ShoppingBag,
+    description:
+      "Developed a web-based system for product and inventory management, purchasing, order processing, balance management, and document handling.",
+    tags: ["Laravel", "MySQL", "API", "Inventory Management"],
+    image: "/images/tradegate.webp",
+    alt: "TradeGate inventory and transaction management interface",
   },
 ];

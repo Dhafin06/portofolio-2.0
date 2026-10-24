@@ -137,7 +137,7 @@ export default function DevProjects() {
             aria-controls="other-projects-list"
             className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2"
           >
-            {isExpanded ? "Show less" : "Show other projects"}
+            {isExpanded ? "Show less" : "Show projects"}
 
             {isExpanded ? (
               <ArrowUp
